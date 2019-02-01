@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from said.sedimentsizedistribution import SedimentSizeDistribution
+from scoupy.sedimentsizedistribution import SedimentSizeDistribution
 
 
 class TestSedimentSizeDistribution(unittest.TestCase):
