@@ -2,9 +2,9 @@ import unittest
 
 import numpy as np
 
-from said.sedimentsample import SedimentSample
-from said.sedimentsizedistribution import SedimentSizeDistribution
-from said.sedimentacousticsample import form_function, SedimentAcousticSample
+from scoupy.sedimentsample import SedimentSample
+from scoupy.sedimentsizedistribution import SedimentSizeDistribution
+from scoupy.acousticsample import form_function, AcousticSample
 
 
 class TestFormFactorCalculation(unittest.TestCase):
@@ -45,6 +45,6 @@ class TestFormFactorCalculation(unittest.TestCase):
         size_distribution = SedimentSizeDistribution(cdf_diameters, volume_cdf)
         sample = SedimentSample(1, size_distribution=size_distribution)
 
-        calculated_form_function = SedimentAcousticSample(sample).form_function(frequency)
+        calculated_form_function = AcousticSample(sample).form_function(frequency)
 
         self.assertTrue(np.isclose(expected_form_function, calculated_form_function, rtol=0.01))
