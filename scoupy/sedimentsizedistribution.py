@@ -46,6 +46,9 @@ class SedimentSizeDistribution:
     def __init__(self, particle_diameters, cumulative_distribution, distribution='volume'):
         """Initialize self. See help(type(self)) for accurate signature."""
 
+        particle_diameters = np.array(particle_diameters)
+        cumulative_distribution = np.array(cumulative_distribution)
+
         if np.any(np.diff(particle_diameters) < 0) or np.any(np.diff(cumulative_distribution) < 0):
             raise ValueError("Values must be ascending order")
 
@@ -67,6 +70,24 @@ class SedimentSizeDistribution:
 
         self._pdf_diameters, self._number_pdf = self._calc_number_pdf(self._cdf_diameters, self._volume_cdf)
         _, self._volume_pdf = self._calc_volume_pdf(self._cdf_diameters, self._volume_cdf)
+
+    def __eq__(self, other):
+        """
+
+        Parameters
+        ----------
+        other : SedimentSizeDistribution
+
+        Returns
+        -------
+
+        """
+
+        if self.__class__ != other.__class__:
+            return False
+        else:
+            return np.array_equal(self._cdf_diameters, other._cdf_diameters) \
+                and np.array_equal(self._volume_cdf, other._volume_cdf)
 
     @staticmethod
     def _calc_number_cdf(cum_particle_diameters, volume_cdf):
@@ -194,6 +215,17 @@ class SedimentSizeDistribution:
             raise ValueError("Invalid scale")
 
         return x, cdf
+
+    def copy(self):
+        """Returns a copy of this instance
+
+        Returns
+        -------
+        size_distribution : SedimentSizeDistribution
+
+        """
+
+        return SedimentSizeDistribution(self._cdf_diameters, self._volume_cdf)
 
     def mean(self, distribution='volume', scale='normal'):
         """The mean particle diameter of the distribution.
