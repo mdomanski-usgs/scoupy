@@ -152,6 +152,24 @@ class SedimentSample:
 
         return self._concentration
 
+    def copy(self):
+        """A deep copy of this SedimentSample
+
+        Returns
+        -------
+        sample : SedimentSample
+
+        """
+
+        cls = self.__class__
+        new_sample = cls.__new__(cls)
+
+        new_sample._density = self._density
+        new_sample._concentration = self._concentration
+        new_sample._size_distribution = self._size_distribution.copy()
+
+        return new_sample
+
     def density(self):
         """The density of this sample
 
