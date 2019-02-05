@@ -7,7 +7,7 @@ distribution by volume and number of particles.
 
 Notes
 -----
-    Distribution type (volume, number) conversions are done according to equations 9 and 10 of [1]_.
+    Distribution type (volume, number) conversions are calculated according to equations 9 and 10 of [1]_.
 
 References
 ----------
