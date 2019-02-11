@@ -12,7 +12,7 @@ setup(
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
-        'Programming Language :: Python 3.6'
+        'Programming Language :: Python 3.7'
     ],
     python_requires='>=3',
     install_requires=['numpy', 'scipy']

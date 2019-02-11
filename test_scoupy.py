@@ -1,6 +1,6 @@
 import os
 import glob
-import importlib
+from importlib import util
 import unittest
 
 absolute_path, _ = os.path.split(os.path.realpath(__file__))
@@ -17,8 +17,8 @@ def load_tests(loader, *args):
     for path in module_paths:
         _, module_file_name = os.path.split(path)
         module_name, _ = os.path.splitext(module_file_name)
-        spec = importlib.util.spec_from_file_location(module_name, path)
-        module = importlib.util.module_from_spec(spec)
+        spec = util.spec_from_file_location(module_name, path)
+        module = util.module_from_spec(spec)
         spec.loader.exec_module(module)
 
         tests = loader.loadTestsFromModule(module)
