@@ -27,9 +27,11 @@ class TestFormFactorCalculation(unittest.TestCase):
         second_integral = np.mean(radii ** 2 * f_e ** 2)
         third_integral = np.mean(radii ** 3)
 
-        expected_form_function = np.sqrt(mean_radius * second_integral / third_integral)
+        expected_form_function = np.sqrt(
+            mean_radius * second_integral / third_integral)
 
-        bin_edges = np.logspace(np.log10(0.375124), np.log10(2000), num=93)/2/1e6
+        bin_edges = np.logspace(
+            np.log10(0.375124), np.log10(2000), num=93)/2/1e6
         hist, bin_edges = np.histogram(radii, bins=bin_edges)
 
         bin_centers = (bin_edges[1:] + bin_edges[:-1]) / 2
@@ -45,6 +47,8 @@ class TestFormFactorCalculation(unittest.TestCase):
         size_distribution = SedimentSizeDistribution(cdf_diameters, volume_cdf)
         sample = SedimentSample(1, size_distribution=size_distribution)
 
-        calculated_form_function = AcousticSample(sample).form_function(frequency)
+        calculated_form_function = AcousticSample(
+            sample).form_function(frequency)
 
-        self.assertTrue(np.isclose(expected_form_function, calculated_form_function, rtol=0.01))
+        self.assertTrue(np.isclose(expected_form_function,
+                                   calculated_form_function, rtol=0.01))

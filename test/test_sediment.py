@@ -17,7 +17,8 @@ class TestSedimentSizeDistribution(unittest.TestCase):
         volume_in_bins = 4/3*(pdf_diameters/2)**3
 
         cumulative_volume = np.cumsum(volume_in_bins)
-        volume_cdf = np.insert(cumulative_volume, 0, 0) / np.sum(volume_in_bins)
+        volume_cdf = np.insert(cumulative_volume, 0, 0) / \
+            np.sum(volume_in_bins)
 
         volume_d50 = np.interp(0.5, volume_cdf, cdf_diameters)
 
