@@ -61,15 +61,19 @@ class SedimentSizeDistribution:
         self._cdf_diameters = copy.deepcopy(particle_diameters)
         if distribution == 'volume':
             self._volume_cdf = copy.deepcopy(cumulative_distribution)
-            self._number_cdf = self._calc_number_cdf(self._cdf_diameters, self._volume_cdf)
+            self._number_cdf = self._calc_number_cdf(
+                self._cdf_diameters, self._volume_cdf)
         elif distribution == 'number':
             self._number_cdf = copy.deepcopy(cumulative_distribution)
-            self._volume_cdf = self._calc_volume_cdf(self._cdf_diameters, self._number_cdf)
+            self._volume_cdf = self._calc_volume_cdf(
+                self._cdf_diameters, self._number_cdf)
         else:
             raise ValueError("Unknown distribution")
 
-        self._pdf_diameters, self._number_pdf = self._calc_number_pdf(self._cdf_diameters, self._volume_cdf)
-        _, self._volume_pdf = self._calc_volume_pdf(self._cdf_diameters, self._volume_cdf)
+        self._pdf_diameters, self._number_pdf = self._calc_number_pdf(
+            self._cdf_diameters, self._volume_cdf)
+        _, self._volume_pdf = self._calc_volume_pdf(
+            self._cdf_diameters, self._volume_cdf)
 
     def __eq__(self, other):
         """
@@ -98,12 +102,14 @@ class SedimentSizeDistribution:
         particle_volumes = 4 / 3 * np.pi * (diameter_mid_points / 2) ** 3
 
         volume_fractions = np.diff(volume_cdf)
-        number_fractions = volume_fractions / particle_volumes / np.sum(volume_fractions / particle_volumes)
+        number_fractions = volume_fractions / particle_volumes / \
+            np.sum(volume_fractions / particle_volumes)
 
         cumulative_number_distribution = np.repeat(np.nan, volume_cdf.shape)
 
         cumulative_number_distribution[0] = 1 - np.sum(number_fractions)
-        cumulative_number_distribution[1:] = np.cumsum(number_fractions) + cumulative_number_distribution[0]
+        cumulative_number_distribution[1:] = np.cumsum(
+            number_fractions) + cumulative_number_distribution[0]
 
         return cumulative_number_distribution
 
@@ -137,11 +143,13 @@ class SedimentSizeDistribution:
         volume_in_bins = particle_volumes * number_fractions
         volume_fractions = volume_in_bins / sum(volume_in_bins)
 
-        cumulative_volume_distribution = np.repeat(np.nan, cumulative_number_distribution.shape)
+        cumulative_volume_distribution = np.repeat(
+            np.nan, cumulative_number_distribution.shape)
 
         # make sure the sum is 1 by filling the first bin with the difference
         cumulative_volume_distribution[0] = 1 - np.sum(volume_fractions)
-        cumulative_volume_distribution[1:] = np.cumsum(volume_fractions) + cumulative_volume_distribution[0]
+        cumulative_volume_distribution[1:] = np.cumsum(
+            volume_fractions) + cumulative_volume_distribution[0]
 
         return cumulative_volume_distribution
 
@@ -179,7 +187,7 @@ class SedimentSizeDistribution:
 
         """
 
-        diameters, cdf = self.cdf(distribution)
+        _, cdf = self.cdf(distribution)
 
         return self._pdf_diameters, np.diff(cdf)
 
@@ -355,7 +363,8 @@ class LogScaleSedimentSizeDistribution(SedimentSizeDistribution):
         alpha = 0.000001
         d_low_quantile = self._dist.ppf(alpha)
         d_high_quantile = self._dist.ppf(1-alpha)
-        d_dist = np.logspace(np.log(d_low_quantile), np.log(d_high_quantile), 1000, base=np.e)
+        d_dist = np.logspace(np.log(d_low_quantile), np.log(
+            d_high_quantile), 1000, base=np.e)
         cdf = self._dist.cdf(d_dist)
 
         super().__init__(d_dist, cdf)

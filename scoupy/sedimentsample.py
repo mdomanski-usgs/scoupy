@@ -42,7 +42,8 @@ class SedimentSample:
         elif size_distribution is None:
             self._size_distribution = None
         else:
-            self._size_distribution = SedimentSizeDistribution(*size_distribution)
+            self._size_distribution = SedimentSizeDistribution(
+                *size_distribution)
 
     def _combine_size_distributions(self, other):
         """Combine sediment size distributions.
@@ -57,25 +58,34 @@ class SedimentSample:
 
         """
 
-        cdf_diameters, cumulative_distribution = self._size_distribution.cdf('volume')
+        cdf_diameters, cumulative_distribution = self._size_distribution.cdf(
+            'volume')
 
-        other_cdf_diameters, other_cumulative_distribution = other._size_distribution.cdf('volume')
+        other_cdf_diameters, other_cumulative_distribution = other._size_distribution.cdf(
+            'volume')
 
         # if the diameter arrays are equivalent, set the new diameters to self diameters
         if not np.array_equal(cdf_diameters, other_cdf_diameters):
-            raise ValueError("Size distributions must have equivalent diameter arrays")
+            raise ValueError(
+                "Size distributions must have equivalent diameter arrays")
 
         bin_volume_fraction = np.diff(cumulative_distribution)
-        bin_volume_concentration = self._concentration / self._density * bin_volume_fraction
+        bin_volume_concentration = self._concentration / \
+            self._density * bin_volume_fraction
 
         other_bin_volume_fraction = np.diff(other_cumulative_distribution)
-        other_bin_volume_concentration = other._concentration / other._density * other_bin_volume_fraction
+        other_bin_volume_concentration = other._concentration / \
+            other._density * other_bin_volume_fraction
 
-        new_bin_volume_concentration = bin_volume_concentration + other_bin_volume_concentration
-        new_cumulative_volume = np.insert(np.cumsum(new_bin_volume_concentration), 0, 0)
-        new_cumulative_distribution = new_cumulative_volume/new_cumulative_volume[-1]
+        new_bin_volume_concentration = bin_volume_concentration + \
+            other_bin_volume_concentration
+        new_cumulative_volume = np.insert(
+            np.cumsum(new_bin_volume_concentration), 0, 0)
+        new_cumulative_distribution = new_cumulative_volume / \
+            new_cumulative_volume[-1]
 
-        new_sediment_size_distribution = SedimentSizeDistribution(cdf_diameters, new_cumulative_distribution)
+        new_sediment_size_distribution = SedimentSizeDistribution(
+            cdf_diameters, new_cumulative_distribution)
 
         return new_sediment_size_distribution
 
@@ -136,7 +146,8 @@ class SedimentSample:
         if self._size_distribution is None or other._size_distribution is None:
             new_sediment_size_distribution = None
         else:
-            new_sediment_size_distribution = self._combine_size_distributions(other)
+            new_sediment_size_distribution = self._combine_size_distributions(
+                other)
 
         return self.__class__(concentration, new_density, new_sediment_size_distribution)
 

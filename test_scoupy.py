@@ -6,7 +6,8 @@ import unittest
 absolute_path, _ = os.path.split(os.path.realpath(__file__))
 
 module_paths = \
-    [path for path in glob.glob(os.path.join(absolute_path, 'test', '*.py')) if '__init__.py' not in path]
+    [path for path in glob.glob(os.path.join(
+        absolute_path, 'test', '*.py')) if '__init__.py' not in path]
 
 
 def load_tests(loader, *args):

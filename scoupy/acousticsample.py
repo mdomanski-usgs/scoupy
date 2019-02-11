@@ -218,7 +218,8 @@ def viscous_attenuation_coefficient(particle_diameter, frequency, sediment_densi
 
     specific_gravity_of_sediment = sediment_density / 1000
     vac = wave_number*(specific_gravity_of_sediment - 1)**2 / \
-        (2*sediment_density) * (s / (s**2 + (specific_gravity_of_sediment + delta)**2))
+        (2*sediment_density) * \
+        (s / (s**2 + (specific_gravity_of_sediment + delta)**2))
 
     return vac
 
@@ -357,8 +358,10 @@ class AcousticSample:
         particle_radius = diameters / 2
         radius_number_pdf = 2*number_pdf
 
-        viscous_coeff = viscous_attenuation_coefficient(diameters, frequency, self._sample.density())
-        mean_viscous = self._mean_viscous_attenuation_coefficient(particle_radius, radius_number_pdf, viscous_coeff)
+        viscous_coeff = viscous_attenuation_coefficient(
+            diameters, frequency, self._sample.density())
+        mean_viscous = self._mean_viscous_attenuation_coefficient(
+            particle_radius, radius_number_pdf, viscous_coeff)
 
         scattering_xs = scattering_cross_section(diameters, frequency)
         mean_scattering = self._mean_scattering_attenuation_coefficient(particle_radius, radius_number_pdf,
@@ -389,8 +392,10 @@ class AcousticSample:
         bin_diameters, volume_fraction = self._sample.size_distribution().fraction('volume')
         bin_concentration = self._sample.concentration()*volume_fraction
 
-        bin_sac = scattering_attenuation_coefficient(bin_diameters, frequency, self._sample.density())
-        bin_vac = viscous_attenuation_coefficient(bin_diameters, frequency, self._sample.density())
+        bin_sac = scattering_attenuation_coefficient(
+            bin_diameters, frequency, self._sample.density())
+        bin_vac = viscous_attenuation_coefficient(
+            bin_diameters, frequency, self._sample.density())
 
         bin_attenuation = bin_concentration*(bin_vac + bin_sac)
 
@@ -417,7 +422,9 @@ class AcousticSample:
         bin_form_function = form_function(bin_diameters, frequency)
 
         bin_scattering_strength = \
-            bin_form_function ** 2 * (3 / 8 * bin_concentration / (np.pi * bin_diameters * self._sample.density()))
+            bin_form_function ** 2 * \
+            (3 / 8 * bin_concentration /
+             (np.pi * bin_diameters * self._sample.density()))
 
         return bin_diameters, bin_scattering_strength
 
@@ -446,11 +453,13 @@ class AcousticSample:
 
         """
 
-        particle_diameters, number_distribution = self._sample.size_distribution().pdf(distribution='number')
+        particle_diameters, number_distribution = self._sample.size_distribution().pdf(
+            distribution='number')
 
         f_e = form_function(particle_diameters, frequency)
 
-        mean_form_function = self._mean_form_function(particle_diameters, number_distribution, f_e)
+        mean_form_function = self._mean_form_function(
+            particle_diameters, number_distribution, f_e)
 
         return mean_form_function
 
