@@ -1,19 +1,24 @@
-"""This module contains class definitions for sediment size distribution data types.
+"""This module contains class definitions for sediment size distribution data
+types.
 
-The data types calculate distribution parameters (mean, median, standard deviation) and allow conversion between
-distribution by volume and number of particles.
+The data types calculate distribution parameters (mean, median, standard
+deviation) and allow conversion between distribution by volume and number of
+particles.
 
 `SedimentSizeDistribution` is the base, and most generic, type.
 
 Notes
 -----
-Distribution type (volume, number) conversions are calculated according to equations (9) and (10) of [1]_.
+Distribution type (volume, number) conversions are calculated according to
+equations (9) and (10) of [1]_.
 
 References
 ----------
-.. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013, Using multi-frequency acoustic attenuation to
-   monitor grain size and concentration of suspended sediment in rivers: Journal of the Acoustical Society of America,
-   v. 133, no. 4, p. 1959−1970, accessed March 11, 2016, http://dx.doi.org/10.1121/1.4792645.
+.. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013, Using
+   multi-frequency acoustic attenuation to monitor grain size and concentration
+   of suspended sediment in rivers: Journal of the Acoustical Society of
+   America, v. 133, no. 4, p. 1959−1970, accessed March 11, 2016,
+   http://dx.doi.org/10.1121/1.4792645.
 
 """
 
@@ -26,33 +31,36 @@ from scipy.stats import lognorm
 class SedimentSizeDistribution:
     """Sediment size distribution.
 
-    `particle_diameters` and `cumulative_distribution` must be one-dimensional and of the same length.
+    `particle_diameters` and `cumulative_distribution` must be one-dimensional
+    and of the same length.
 
     Parameters
     ----------
     particle_diameters : array_like
         Particle diameters, in meters.
-
     cumulative_distribution : array_like
-        Cumulative distribution of the of particles. The cumulative distribution may be by either volume or number of
-        particles, as specified by `distribution`.
-
+        Cumulative distribution of the of particles. The cumulative
+        distribution may be by either volume or number of particles, as
+        specified by `distribution`.
     distribution : {'volume', 'number'}, optional
-        The type of distribution of `cumulative_volume_distribution` (the default is 'volume').
-
+        The type of distribution of `cumulative_volume_distribution` (the
+        default is 'volume').
 
     """
 
-    def __init__(self, particle_diameters, cumulative_distribution, distribution='volume'):
+    def __init__(self, particle_diameters, cumulative_distribution,
+                 distribution='volume'):
         """Initialize self. See help(type(self)) for accurate signature."""
 
         particle_diameters = np.array(particle_diameters)
         cumulative_distribution = np.array(cumulative_distribution)
 
-        if np.any(np.diff(particle_diameters) < 0) or np.any(np.diff(cumulative_distribution) < 0):
+        if np.any(np.diff(particle_diameters) < 0) or \
+                np.any(np.diff(cumulative_distribution) < 0):
             raise ValueError("Values must be ascending order")
 
-        if np.ndim(particle_diameters) != 1 or np.ndim(cumulative_distribution) != 1:
+        if np.ndim(particle_diameters) != 1 or \
+                np.ndim(cumulative_distribution) != 1:
             raise ValueError("Array must be one-dimensional")
 
         if len(particle_diameters) != len(cumulative_distribution):
@@ -84,6 +92,7 @@ class SedimentSizeDistribution:
 
         Returns
         -------
+        bool
 
         """
 
@@ -180,10 +189,11 @@ class SedimentSizeDistribution:
 
         Notes
         -----
-        The values in `diameters` are mid-points of the bins defined by the `particle_diameters` parameter of the
-        initialization method.
+        The values in `diameters` are mid-points of the bins defined by the
+        `particle_diameters` parameter of the initialization method.
 
-        `fraction` is calculated as the difference of the CDF value in each bin.
+        `fraction` is calculated as the difference of the CDF value in each
+        bin.
 
         """
 
@@ -229,7 +239,7 @@ class SedimentSizeDistribution:
 
         Returns
         -------
-        size_distribution : SedimentSizeDistribution
+        SedimentSizeDistribution
 
         """
 
@@ -242,12 +252,12 @@ class SedimentSizeDistribution:
         ----------
         distribution : {'volume', 'number'}, optional
             Distribution type (the default is 'volume').
-        scale : {'normal', 'log'}, optional.
+        scale : {'normal', 'log'}, optional
             Scale of distribution (the default is 'normal').
 
         Returns
         -------
-        mean : float
+        float
             Mean particle diameter (in meters if `scale` is normal).
 
         """
@@ -263,12 +273,14 @@ class SedimentSizeDistribution:
 
         Parameters
         ----------
-        distribution
-        scale
+        distribution : {'volume', 'number'}, optional
+            Distribution type (the default is 'volume').
+        scale : {'normal', 'log'}, optional
+            Scale of distribution (the default is 'normal').
 
         Returns
         -------
-        median : float
+        float
             Median particle diameter (in meters if `scale` is normal).
 
         """
@@ -292,8 +304,8 @@ class SedimentSizeDistribution:
         Returns
         -------
         diameters, pdf : numpy.ndarray
-            The diameters and values of a PDF. If `scale` is 'normal', `diameters` is in meters and `pdf` is in
-            meters**-1.
+            The diameters and values of a PDF. If `scale` is 'normal',
+            `diameters` is in meters and `pdf` is in meters**-1.
 
         """
 
@@ -327,7 +339,8 @@ class SedimentSizeDistribution:
         Returns
         -------
         std : float
-            Standard deviation of the distribution. If `scale` is 'normal', `std` is in meters.
+            Standard deviation of the distribution. If `scale` is 'normal',
+            `std` is in meters.
 
         """
 
@@ -350,7 +363,7 @@ class LogScaleSedimentSizeDistribution(SedimentSizeDistribution):
     median_diameter : float
         Median diameter, in meters.
 
-    std_log : float
+    float
         Geometric standard deviation (log-scale)
 
     """
@@ -376,12 +389,12 @@ class LogScaleSedimentSizeDistribution(SedimentSizeDistribution):
         ----------
         distribution : {'volume', 'number'}, optional
             Distribution type (the default is 'volume').
-        scale : {'normal', 'log'}, optional.
+        scale : {'normal', 'log'}, optional
             Scale of distribution (the default is 'normal').
 
         Returns
         -------
-        mean : float
+        float
             Mean particle diameter (in meters if `scale` is normal).
 
         """
@@ -401,8 +414,10 @@ class LogScaleSedimentSizeDistribution(SedimentSizeDistribution):
 
         Parameters
         ----------
-        distribution
-        scale
+        distribution : {'volume', 'number'}, optional
+            Distribution type (the default is 'volume').
+        scale : {'normal', 'log'}, optional
+            Scale of distribution (the default is 'normal').
 
         Returns
         -------
@@ -437,7 +452,8 @@ class PhiScaleSedimentSizeDistribution(LogScaleSedimentSizeDistribution):
 
     def __init__(self, median_diameter, sigma_phi):
 
-        # scale the phi transform standard deviation so it can be used in a lognormal distribution
+        # scale the phi transform standard deviation so it can be used in a
+        # lognormal distribution
         std_log = np.log(2) * sigma_phi
 
         super().__init__(median_diameter, std_log)

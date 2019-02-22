@@ -1,6 +1,8 @@
-"""This module contains the class definition and supporting functions for AcousticSample.
+"""This module contains the class definition and supporting functions for
+AcousticSample.
 
-The primary function of the AcousticSample class is to calculate attenuation and form function for a SedimentSample.
+The primary function of the AcousticSample class is to calculate attenuation
+and form function for a SedimentSample.
 
 Notes
 -----
@@ -8,13 +10,16 @@ Notes
 
 References
 ----------
-.. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013, Using multi-frequency acoustic attenuation to
-   monitor grain size and concentration of suspended sediment in rivers: Journal of the Acoustical Society of America,
-   v. 133, no. 4, p. 1959−1970, accessed March 11, 2016, http://dx.doi.org/10.1121/1.4792645.
+.. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013, Using
+   multi-frequency acoustic attenuation to monitor grain size and concentration
+   of suspended sediment in rivers: Journal of the Acoustical Society of
+   America, v. 133, no. 4, p. 1959−1970, accessed March 11, 2016,
+   http://dx.doi.org/10.1121/1.4792645.
 
-.. [2] Thorne, P.D., and Meral, R., 2008, Formulations for the scattering properties of suspended sandy sediments for
-   use in the application of acoustics to sediment transport processes: Continental Shelf Research, v. 28, no. 2, p.
-   309–317, doi:10.1016/j.csr.2007.08.002.
+.. [2] Thorne, P.D., and Meral, R., 2008, Formulations for the scattering
+   properties of suspended sandy sediments for use in the application of
+   acoustics to sediment transport processes: Continental Shelf Research, v.
+   28, no. 2, p. 309–317, doi:10.1016/j.csr.2007.08.002.
 
 """
 
@@ -30,14 +35,12 @@ def calc_x(particle_diameter, frequency):
     ----------
     particle_diameter : float
         Particle diameter, in m
-
     frequency : float
         Acoustic frequency in kHz
 
     Returns
     -------
-    x : float, array_like
-        ka
+    float, array_like
 
     """
 
@@ -56,13 +59,12 @@ def form_function(particle_diameter, frequency):
     ----------
     particle_diameter : float
         Particle diameter in m
-
     frequency : float
         Acoustic frequency in kHz
 
     Returns
     -------
-    f_e : float
+    float
         Form function
 
     Notes
@@ -71,9 +73,10 @@ def form_function(particle_diameter, frequency):
 
     References
     ----------
-    .. [1] Thorne, P.D., and Meral, R., 2008, Formulations for the scattering properties of suspended sandy sediments
-       for use in the application of acoustics to sediment transport processes: Continental Shelf Research, v. 28, no.
-       2, p. 309–317, doi:10.1016/j.csr.2007.08.002.
+    .. [1] Thorne, P.D., and Meral, R., 2008, Formulations for the scattering
+       properties of suspended sandy sediments for use in the application of
+       acoustics to sediment transport processes: Continental Shelf Research,
+       v. 28, no. 2, p. 309–317, doi:10.1016/j.csr.2007.08.002.
 
     """
 
@@ -93,34 +96,36 @@ def form_function(particle_diameter, frequency):
     return f_e
 
 
-def scattering_attenuation_coefficient(particle_diameter, frequency, sediment_density):
+def scattering_attenuation_coefficient(particle_diameter, frequency,
+                                       sediment_density):
     """Scattering attenuation coefficient for mono-sized distribution
 
     Parameters
     ----------
     particle_diameter : float
         Particle diameter in m
-
     frequency : float
         Acoustic frequency in kHz
-
     sediment_density : float
         Density of sediment in kg/m**3
 
     Returns
     -------
-    zeta_s : float
+    float
         Scattering attenuation coefficient in m**2/kg
 
     Notes
     -----
-    Scattering attenuation coefficient is calculated using equation (5) of [1]_.
+    Scattering attenuation coefficient is calculated using equation (5)
+    of [1]_.
 
     References
     ----------
-    .. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013, Using multi-frequency acoustic attenuation to
-       monitor grain size and concentration of suspended sediment in rivers: Journal of the Acoustical Society of
-       America, v. 133, no. 4, p. 1959−1970, accessed March 11, 2016, http://dx.doi.org/10.1121/1.4792645.
+    .. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013, Using
+       multi-frequency acoustic attenuation to monitor grain size and
+       concentration of suspended sediment in rivers: Journal of the
+       Acoustical Society of America, v. 133, no. 4, p. 1959−1970, accessed
+       March 11, 2016, http://dx.doi.org/10.1121/1.4792645.
 
     """
 
@@ -140,14 +145,13 @@ def scattering_cross_section(particle_diameter, frequency):
     ----------
     particle_diameter : float
         Particle diameter in m
-
     frequency : float
         Acoustic frequency in kHz
 
     Returns
     -------
-    chi_e : Scattering cross section
-        float
+    float
+        Scattering cross section
 
     Notes
     -----
@@ -155,9 +159,10 @@ def scattering_cross_section(particle_diameter, frequency):
 
     References
     ----------
-    .. [1] Thorne, P.D., and Meral, R., 2008, Formulations for the scattering properties of suspended sandy sediments
-       for use in the application of acoustics to sediment transport processes: Continental Shelf Research, v. 28, no.
-       2, p. 309–317, doi:10.1016/j.csr.2007.08.002.
+    .. [1] Thorne, P.D., and Meral, R., 2008, Formulations for the scattering
+       properties of suspended sandy sediments for use in the application of
+       acoustics to sediment transport processes: Continental Shelf Research,
+       v. 28, no. 2, p. 309–317, doi:10.1016/j.csr.2007.08.002.
 
     """
 
@@ -171,34 +176,36 @@ def scattering_cross_section(particle_diameter, frequency):
     return chi_e
 
 
-def viscous_attenuation_coefficient(particle_diameter, frequency, sediment_density):
+def viscous_attenuation_coefficient(particle_diameter, frequency,
+                                    sediment_density):
     """Viscous attenuation coefficient for a mono-sized distribution
 
     Parameters
     ----------
     particle_diameter : float
         Particle diameter in m
-
     frequency : float
         Acoustic frequency in kHz
-
     sediment_density : float
         Density of sediment in kg/m**3
 
     Returns
     -------
-    zeta_v : float
+    float
         Viscous attenuation coefficient in m**2/kg
 
     Notes
     -----
-    The viscous attenuation coefficient is calculated using equation (7) of [1]_.
+    The viscous attenuation coefficient is calculated using equation (7) of
+    [1]_.
 
     References
     ----------
-    .. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013, Using multi-frequency acoustic attenuation to
-       monitor grain size and concentration of suspended sediment in rivers: Journal of the Acoustical Society of
-       America, v. 133, no. 4, p. 1959−1970, accessed March 11, 2016, http://dx.doi.org/10.1121/1.4792645.
+    .. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013, Using
+       multi-frequency acoustic attenuation to monitor grain size and
+       concentration of suspended sediment in rivers: Journal of the Acoustical
+       Society of America, v. 133, no. 4, p. 1959−1970, accessed March 11,
+       2016, http://dx.doi.org/10.1121/1.4792645.
 
     """
 
@@ -238,26 +245,24 @@ class AcousticSample:
         self._sample = sediment_sample
 
     @staticmethod
-    def _mean_scattering_attenuation_coefficient(a, number_pdf, scattering_xs, rho_s):
+    def _mean_scat_attenuation_coefficient(a, number_pdf, scattering_xs,
+                                           rho_s):
         """Ensemble averaged scattering attenuation coefficient
 
         Parameters
         ----------
         a : array_like
             Particle radii in m
-
         number_pdf : array_like
             Number PDF
-
         scattering_xs : array_like
             Scattering cross section
-
         rho_s : float
             Density of sediment in kg/m**3
 
         Returns
         -------
-        mean_zeta_s : float
+        float
             Ensemble averaged scattering attenuation coefficient in m**2/kg
 
         """
@@ -275,16 +280,14 @@ class AcousticSample:
         ----------
         a : array_like
             Particle radii in m
-
         number_pdf : array_like
             Number PDf
-
         f_e : array_like
             Form function
 
         Returns
         -------
-        mean_f_e : float
+        float
             Ensemble averaged form function
 
         """
@@ -305,16 +308,14 @@ class AcousticSample:
         ----------
         a : array_like
             Particle radii in m
-
         number_pdf : array_like
             Number PDF
-
         viscous_coeff : float
             Viscous attenuation coefficient in m**2/kg
 
         Returns
         -------
-        mean_zeta_v : float
+        float
             Ensemble averaged viscous attenuation coefficient in m**2/kg
 
         """
@@ -334,25 +335,30 @@ class AcousticSample:
 
         Returns
         -------
-        mean_zeta : float
-            Ensemble averaged attenuation coefficient for this sample in m**2/kg.
+        float
+            Ensemble averaged attenuation coefficient for this sample in
+            m**2/kg.
 
         Notes
         -----
-        The ensemble averaged attenuation coefficient consists of the sum of the scattering and viscous attenuation
-        coefficients ([1]_). The ensemble averaged scattering and viscous coefficients are calculated according to
-        equations (5) and (7) of [1]_.
+        The ensemble averaged attenuation coefficient consists of the sum of
+        the scattering and viscous attenuation coefficients ([1]_). The
+        ensemble averaged scattering and viscous coefficients are calculated
+        according to equations (5) and (7) of [1]_.
 
         References
         ----------
-        .. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013, Using multi-frequency acoustic attenuation
-           to monitor grain size and concentration of suspended sediment in rivers: Journal of the Acoustical Society of
-           America, v. 133, no. 4, p. 1959−1970, accessed March 11, 2016, http://dx.doi.org/10.1121/1.4792645.
+        .. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013,
+           Using multi-frequency acoustic attenuation to monitor grain size and
+           concentration of suspended sediment in rivers: Journal of the
+           Acoustical Society of America, v. 133, no. 4, p. 1959−1970, accessed
+           March 11, 2016, http://dx.doi.org/10.1121/1.4792645.
 
         """
 
         # diameters, number PDF in meters
-        diameters, number_pdf = self._sample.size_distribution().pdf(distribution='number')
+        diameters, number_pdf = \
+            self._sample.size_distribution().pdf(distribution='number')
 
         # radius, radius number PDF in meters
         particle_radius = diameters / 2
@@ -364,13 +370,17 @@ class AcousticSample:
             particle_radius, radius_number_pdf, viscous_coeff)
 
         scattering_xs = scattering_cross_section(diameters, frequency)
-        mean_scattering = self._mean_scattering_attenuation_coefficient(particle_radius, radius_number_pdf,
-                                                                        scattering_xs, self._sample.density())
+        mean_scattering = \
+            self._mean_scat_attenuation_coefficient(particle_radius,
+                                                    radius_number_pdf,
+                                                    scattering_xs,
+                                                    self._sample.density())
 
         return mean_viscous + mean_scattering
 
     def bin_attenuation(self, frequency):
-        """Sediment attenuation contribution from each bin of the sediment sample of this instance
+        """Sediment attenuation contribution from each bin of the sediment
+        sample of this instance
 
         Parameters
         ----------
@@ -380,16 +390,19 @@ class AcousticSample:
         Returns
         -------
         diameters, attenuation : array_like
-            `diameters` is an array of diameters in m. `attenuation` is an array of attenuation values in dB/m.
+            `diameters` is an array of diameters in m. `attenuation` is an
+            array of attenuation values in dB/m.
 
         Notes
         -----
-        `diameters` is an array of mid-points of the distribution of this instance. `attenuation` is the attenuation
-        calculated for each diameter.
+        `diameters` is an array of mid-points of the distribution of this
+        instance. `attenuation` is the attenuation calculated for each
+        diameter.
 
         """
 
-        bin_diameters, volume_fraction = self._sample.size_distribution().fraction('volume')
+        bin_diameters, volume_fraction = \
+            self._sample.size_distribution().fraction('volume')
         bin_concentration = self._sample.concentration()*volume_fraction
 
         bin_sac = scattering_attenuation_coefficient(
@@ -402,7 +415,8 @@ class AcousticSample:
         return bin_diameters, bin_attenuation
 
     def bin_scattering_strength(self, frequency):
-        """Scattering strength contribution from each bin of the sediment sample of this instance
+        """Scattering strength contribution from each bin of the sediment
+        sample of this instance
 
         Parameters
         ----------
@@ -412,11 +426,12 @@ class AcousticSample:
         Returns
         -------
         diameter, scattering_strength : array_like
-            `diameters` is an array of diameters in m. `scattering_strength` is an array of scattering strength values
-            in dB.
+            `diameters` is an array of diameters in m. `scattering_strength` is
+            an array of scattering strength values in dB.
         """
 
-        bin_diameters, volume_fraction = self._sample.size_distribution().fraction('volume')
+        bin_diameters, volume_fraction = \
+            self._sample.size_distribution().fraction('volume')
         bin_concentration = self._sample.concentration()*volume_fraction
 
         bin_form_function = form_function(bin_diameters, frequency)
@@ -438,23 +453,26 @@ class AcousticSample:
 
         Returns
         -------
-        mean_f_e : float
+        float
             Ensemble averaged form function
 
         Notes
         -----
-        The ensemble averaged form function is calculated using equation (3) of [1]_.
+        The ensemble averaged form function is calculated using equation (3)
+        of [1]_.
 
         References
         ----------
-        .. [1] Thorne, P.D., and Meral, R., 2008, Formulations for the scattering properties of suspended sandy
-           sediments for use in the application of acoustics to sediment transport processes: Continental Shelf
-           Research, v. 28, no. 2, p. 309–317, doi:10.1016/j.csr.2007.08.002.
+        .. [1] Thorne, P.D., and Meral, R., 2008, Formulations for the
+           scattering properties of suspended sandy sediments for use in the
+           application of acoustics to sediment transport processes:
+           Continental Shelf Research, v. 28, no. 2, p. 309–317,
+           doi:10.1016/j.csr.2007.08.002.
 
         """
 
-        particle_diameters, number_distribution = self._sample.size_distribution().pdf(
-            distribution='number')
+        particle_diameters, number_distribution = \
+            self._sample.size_distribution().pdf(distribution='number')
 
         f_e = form_function(particle_diameters, frequency)
 
@@ -468,7 +486,7 @@ class AcousticSample:
 
         Returns
         -------
-        sample : SedimentSample
+        SedimentSample
 
         """
 
