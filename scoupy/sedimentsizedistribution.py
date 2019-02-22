@@ -66,13 +66,13 @@ class SedimentSizeDistribution:
         if len(particle_diameters) != len(cumulative_distribution):
             raise ValueError("Array shapes must be equal")
 
-        self._cdf_diameters = copy.deepcopy(particle_diameters)
+        self._cdf_diameters = np.array(particle_diameters)
         if distribution == 'volume':
-            self._volume_cdf = copy.deepcopy(cumulative_distribution)
+            self._volume_cdf = np.array(cumulative_distribution)
             self._number_cdf = self._calc_number_cdf(
                 self._cdf_diameters, self._volume_cdf)
         elif distribution == 'number':
-            self._number_cdf = copy.deepcopy(cumulative_distribution)
+            self._number_cdf = np.array(cumulative_distribution)
             self._volume_cdf = self._calc_volume_cdf(
                 self._cdf_diameters, self._number_cdf)
         else:
@@ -199,22 +199,22 @@ class SedimentSizeDistribution:
 
         _, cdf = self.cdf(distribution)
 
-        return self._pdf_diameters, np.diff(cdf)
+        return self._pdf_diameters.copy(), np.diff(cdf)
 
-    def cdf(self, distribution='volume', scale='normal'):
+    def cdf(self, distribution='volume', scale='none'):
         """Cumulative distribution function.
 
         Parameters
         ----------
         distribution : {'volume', 'number'}, optional
             Distribution type (the default is 'volume').
-        scale : {'normal', 'log'}, optional
-            Scale of distribution (the default is 'normal').
+        scale : {'none', 'log'}, optional
+            Scale of distribution (the default is 'none').
 
         Returns
         -------
         diameters, cdf : numpy.ndarray
-            If `scale` is 'normal', `diameters` is in meters.
+            If `scale` is 'none', `diameters` is in meters.
 
         """
 
@@ -225,7 +225,7 @@ class SedimentSizeDistribution:
         else:
             raise ValueError("Invalid distribution")
 
-        if scale == 'normal':
+        if scale == 'none':
             x = self._cdf_diameters.copy()
         elif scale == 'log':
             x = np.log(self._cdf_diameters)
@@ -245,15 +245,15 @@ class SedimentSizeDistribution:
 
         return SedimentSizeDistribution(self._cdf_diameters, self._volume_cdf)
 
-    def mean(self, distribution='volume', scale='normal'):
+    def mean(self, distribution='volume', scale='none'):
         """The mean particle diameter of the distribution.
 
         Parameters
         ----------
         distribution : {'volume', 'number'}, optional
             Distribution type (the default is 'volume').
-        scale : {'normal', 'log'}, optional
-            Scale of distribution (the default is 'normal').
+        scale : {'none', 'log'}, optional
+            Scale of distribution (the default is 'none').
 
         Returns
         -------
@@ -268,15 +268,15 @@ class SedimentSizeDistribution:
 
         return mean
 
-    def median(self, distribution='volume', scale='normal'):
+    def median(self, distribution='volume', scale='none'):
         """The median particle diameter of the distribution
 
         Parameters
         ----------
         distribution : {'volume', 'number'}, optional
             Distribution type (the default is 'volume').
-        scale : {'normal', 'log'}, optional
-            Scale of distribution (the default is 'normal').
+        scale : {'none', 'log'}, optional
+            Scale of distribution (the default is 'none').
 
         Returns
         -------
@@ -291,20 +291,20 @@ class SedimentSizeDistribution:
 
         return median
 
-    def pdf(self, distribution='volume', scale='normal'):
+    def pdf(self, distribution='volume', scale='none'):
         """Probability density function (PDF).
 
         Parameters
         ----------
         distribution : {'volume', 'number'}, optional
             Distribution type (the default is 'volume').
-        scale : {'normal', 'log'}, optional
-            Scale of distribution (the default is 'normal').
+        scale : {'none', 'log'}, optional
+            Scale of distribution (the default is 'none').
 
         Returns
         -------
         diameters, pdf : numpy.ndarray
-            The diameters and values of a PDF. If `scale` is 'normal',
+            The diameters and values of a PDF. If `scale` is 'none',
             `diameters` is in meters and `pdf` is in meters**-1.
 
         """
@@ -316,7 +316,7 @@ class SedimentSizeDistribution:
         else:
             raise ValueError("Invalid distribution")
 
-        if scale == 'normal':
+        if scale == 'none':
             x = self._pdf_diameters.copy()
         elif scale == 'log':
             x = np.log(self._pdf_diameters)
@@ -326,20 +326,20 @@ class SedimentSizeDistribution:
 
         return x, pdf
 
-    def std(self, distribution='volume', scale='normal'):
+    def std(self, distribution='volume', scale='none'):
         """Standard deviation.
 
         Parameters
         ----------
         distribution : {'volume', 'number'}, optional
             Distribution type (the default is 'volume').
-        scale : {'normal', 'log'}, optional
-            Scale of distribution (the default is 'normal').
+        scale : {'none', 'log'}, optional
+            Scale of distribution (the default is 'none').
 
         Returns
         -------
         std : float
-            Standard deviation of the distribution. If `scale` is 'normal',
+            Standard deviation of the distribution. If `scale` is 'none',
             `std` is in meters.
 
         """
@@ -382,15 +382,15 @@ class LogScaleSedimentSizeDistribution(SedimentSizeDistribution):
 
         super().__init__(d_dist, cdf)
 
-    def mean(self, distribution='volume', scale='normal'):
+    def mean(self, distribution='volume', scale='none'):
         """The mean particle diameter of the distribution.
 
         Parameters
         ----------
         distribution : {'volume', 'number'}, optional
             Distribution type (the default is 'volume').
-        scale : {'normal', 'log'}, optional
-            Scale of distribution (the default is 'normal').
+        scale : {'none', 'log'}, optional
+            Scale of distribution (the default is 'none').
 
         Returns
         -------
@@ -399,7 +399,7 @@ class LogScaleSedimentSizeDistribution(SedimentSizeDistribution):
 
         """
 
-        if distribution == 'volume' and scale == 'normal':
+        if distribution == 'volume' and scale == 'none':
 
             mean_diameter = self._dist.mean()
 
@@ -409,15 +409,15 @@ class LogScaleSedimentSizeDistribution(SedimentSizeDistribution):
 
         return mean_diameter
 
-    def median(self, distribution='volume', scale='normal'):
+    def median(self, distribution='volume', scale='none'):
         """The median particle diameter of the distribution
 
         Parameters
         ----------
         distribution : {'volume', 'number'}, optional
             Distribution type (the default is 'volume').
-        scale : {'normal', 'log'}, optional
-            Scale of distribution (the default is 'normal').
+        scale : {'none', 'log'}, optional
+            Scale of distribution (the default is 'none').
 
         Returns
         -------
@@ -426,7 +426,7 @@ class LogScaleSedimentSizeDistribution(SedimentSizeDistribution):
 
         """
 
-        if distribution == 'volume' and scale == 'normal':
+        if distribution == 'volume' and scale == 'none':
 
             median_diameter = self._dist.median()
 
