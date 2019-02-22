@@ -242,7 +242,7 @@ class AcousticSample:
 
     def __init__(self, sediment_sample):
 
-        self._sample = sediment_sample
+        self._sample = sediment_sample.copy()
 
     @staticmethod
     def _mean_scat_attenuation_coefficient(a, number_pdf, scattering_xs,
