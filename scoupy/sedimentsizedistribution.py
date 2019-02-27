@@ -57,14 +57,20 @@ class SedimentSizeDistribution:
 
         if np.any(np.diff(particle_diameters) < 0) or \
                 np.any(np.diff(cumulative_distribution) < 0):
-            raise ValueError("Values must be ascending order")
+            raise ValueError("Particle and distribution array values must " +
+                             "be ascending order")
 
         if np.ndim(particle_diameters) != 1 or \
                 np.ndim(cumulative_distribution) != 1:
-            raise ValueError("Array must be one-dimensional")
+            raise ValueError("Partical and distribution arrays must be " +
+                             "one-dimensional")
 
         if len(particle_diameters) != len(cumulative_distribution):
-            raise ValueError("Array shapes must be equal")
+            raise ValueError("Particle and distribution array shapes must " +
+                             "be equal")
+
+        if not np.isclose(cumulative_distribution[-1], 1, atol=0.001):
+            raise ValueError("Maximum CDF value must be close to 1")
 
         self._cdf_diameters = np.array(particle_diameters)
         if distribution == 'volume':

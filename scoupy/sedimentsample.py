@@ -58,18 +58,18 @@ class SedimentSample:
 
         """
 
-        cdf_diameters, cumulative_distribution = self._size_distribution.cdf(
-            'volume')
+        cdf_diameters, cumulative_distribution = \
+            self._size_distribution.cdf('volume')
 
         other_cdf_diameters, other_cumulative_distribution = \
             other._size_distribution.cdf('volume')
 
-        # if the diameter arrays are equivalent, set the new diameters to self
-        # diameters
+        # CDF diameters must be equivalent
         if not np.array_equal(cdf_diameters, other_cdf_diameters):
             raise ValueError(
                 "Size distributions must have equivalent diameter arrays")
 
+        # calculate the volume in each bin for both distributions
         bin_volume_fraction = np.diff(cumulative_distribution)
         bin_volume_concentration = self._concentration / \
             self._density * bin_volume_fraction
@@ -78,13 +78,18 @@ class SedimentSample:
         other_bin_volume_concentration = other._concentration / \
             other._density * other_bin_volume_fraction
 
+        # add the volume from each distribution in each bin and get
+        # calculate a cumulative volume
         new_bin_volume_concentration = bin_volume_concentration + \
             other_bin_volume_concentration
         new_cumulative_volume = np.insert(
             np.cumsum(new_bin_volume_concentration), 0, 0)
+
+        # calculate a cumulative volume fraction (same as the CDF)
         new_cumulative_distribution = new_cumulative_volume / \
             new_cumulative_volume[-1]
 
+        # initialize and return a new sediment size distribution
         new_sediment_size_distribution = SedimentSizeDistribution(
             cdf_diameters, new_cumulative_distribution)
 
