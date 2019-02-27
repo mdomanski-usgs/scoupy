@@ -90,8 +90,8 @@ class SedimentSample:
 
         return new_sediment_size_distribution
 
-    def _weighted_average_scalar_density(self, other):
-        """
+    def _mean_scalar_density(self, other):
+        """Calculates weighted harmonic mean from this and other densities.
 
         Parameters
         ----------
@@ -103,17 +103,9 @@ class SedimentSample:
 
         """
 
-        # get a volume weighted average of the sample densities for the new
-        # sample density
-        sediment_volume = self._concentration/self._density
-        other_sediment_volume = other._concentration/other._density
-        total_sediment_volume = sediment_volume + other_sediment_volume
-
-        density_weight = sediment_volume/total_sediment_volume
-        other_density_weight = other_sediment_volume/total_sediment_volume
-
-        new_density = \
-            density_weight*self._density + other_density_weight*other._density
+        new_density = (self._concentration + other._concentration) / \
+            (self._concentration/self._density +
+             other._concentration/other._density)
 
         return new_density
 
@@ -147,7 +139,7 @@ class SedimentSample:
         if self._density == other._density:
             new_density = self._density
         else:
-            new_density = self._weighted_average_scalar_density(other)
+            new_density = self._mean_scalar_density(other)
 
         if self._size_distribution is None or other._size_distribution is None:
             new_sediment_size_distribution = None
