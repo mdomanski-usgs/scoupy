@@ -236,7 +236,7 @@ class AcousticSample:
 
     Parameters
     ----------
-    sediment_sample : scoupy.sedimentsample.SedimentSample
+    sediment_sample : SedimentSample
 
     """
 
@@ -337,7 +337,7 @@ class AcousticSample:
         -------
         float
             Ensemble averaged attenuation coefficient for this sample in
-            m**2/kg.
+            dB * m**2/kg.
 
         Notes
         -----
@@ -433,13 +433,14 @@ class AcousticSample:
         bin_diameters, volume_fraction = \
             self._sample.size_distribution().fraction('volume')
         bin_concentration = self._sample.concentration()*volume_fraction
+        density = self._sample.density()
 
         bin_form_function = form_function(bin_diameters, frequency)
 
         bin_scattering_strength = \
             bin_form_function ** 2 * \
             (3 / 8 * bin_concentration /
-             (np.pi * bin_diameters * self._sample.density()))
+             (np.pi * bin_diameters * density))
 
         return bin_diameters, bin_scattering_strength
 
@@ -480,6 +481,37 @@ class AcousticSample:
             particle_diameters, number_distribution, f_e)
 
         return mean_form_function
+
+    def scattering_strength(self, frequency):
+        """Scattering strength for this this sample.
+
+        Parameters
+        ----------
+        frequency : float
+            Acoustic frequency in kHz
+
+        Returns
+        -------
+        float
+            Scattering strength in dB
+
+        Notes
+        -----
+        The form function in the scattering strength from this method is
+        from `form_function`.
+
+        """
+
+        form_function = self.form_function()
+        concentration = self._sample.concentration()
+        mean_diameter = self._sample.mean_diameter('number')
+        density = self._sample.density()
+
+        scattering_strength = form_function ** 2 \
+            (3 / 8 * concentration /
+             (np.pi * mean_diameter * density))
+
+        return scattering_strength
 
     def sediment_sample(self):
         """Sediment sample of this instance
