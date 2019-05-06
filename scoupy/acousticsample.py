@@ -502,12 +502,12 @@ class AcousticSample:
 
         """
 
-        form_function = self.form_function()
+        form_function = self.form_function(frequency)
         concentration = self._sample.concentration()
-        mean_diameter = self._sample.mean_diameter('number')
+        mean_diameter = self._sample.size_distribution().mean('number')
         density = self._sample.density()
 
-        scattering_strength = form_function ** 2 \
+        scattering_strength = form_function ** 2 * \
             (3 / 8 * concentration /
              (np.pi * mean_diameter * density))
 
