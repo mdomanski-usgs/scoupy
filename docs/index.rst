@@ -1,5 +1,5 @@
 .. scoupy documentation master file, created by
-   sphinx-quickstart on Mon May  6 11:33:16 2019.
+   sphinx-quickstart on Mon May  6 15:38:33 2019.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -11,7 +11,6 @@ Welcome to scoupy's documentation!
    :caption: Contents:
 
    modules
-
 
 
 Indices and tables

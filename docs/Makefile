@@ -4,10 +4,10 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXAPI	  = sphinx-apidoc
-SOURCEDIR     = source
-BUILDDIR      = build
-MODULEDIR     = ../scoupy
+SPHINXAPIDOC  = sphinx-apidoc
+SOURCEDIR     = .
+BUILDDIR      = _build
+PROJECTDIR    = ../scoupy
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -18,5 +18,5 @@ help:
 # Catch-all target: route all unknown targets to Sphinx using the new
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
-	@$(SPHINXAPI) -f -o "$(SOURCEDIR)" "$(BUILDDIR)"
+	@$(SPHINXAPIDOC) -f -o "$(SOURCEDIR)" "$(PROJECTDIR)"
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
