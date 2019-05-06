@@ -368,7 +368,6 @@ class LogScaleSedimentSizeDistribution(SedimentSizeDistribution):
     ----------
     median_diameter : float
         Median diameter, in meters.
-
     float
         Geometric standard deviation (log-scale)
 
@@ -450,7 +449,6 @@ class PhiScaleSedimentSizeDistribution(LogScaleSedimentSizeDistribution):
     ----------
     median_diameter : float
         Median diameter (D50), in meters
-
     sigma_phi : float
         Geometric standard deviation (phi-scale)
 
