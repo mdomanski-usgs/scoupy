@@ -43,7 +43,8 @@ class WaterProperties:
     """
 
     SPEED_OF_SOUND_IN_WATER = 1442.5  # m/s
-
+    # deg C. water temperature at which the speed of sound is equal to
+    # SPEED_OF_SOUND_IN_WATER
     TEMPERATURE = 8.81187
 
     @classmethod
@@ -65,7 +66,13 @@ class WaterProperties:
         Notes
         -----
         The speed of sound in water is calculated using the fifth order
-        described in [2]_.
+        described in [1]_.
+
+        References
+        ----------
+        .. [1] Marczak, Wojciech, 1997, Water as a standard in the measurements
+           of speed of sound in liquids: Journal of the Acoustical Society of
+           America, v. 102, no. 5, p. 2776−2779.
 
         """
 
@@ -97,11 +104,17 @@ class WaterProperties:
 
         Notes
         -----
-        Water absorption is calculated according to equation (8) of [1]_
-        (under the assumption of freshwater rivers at shallow depths).
+        Water absorption is calculated according to equation (8) of [1]_ with
+        the assumption of freshwater rivers at shallow depths.
 
         References
         ----------
+        .. [1] Landers, M.N., Straub, T.D., Wood, M.S., and Domanski, M.M.,
+           2016, Sediment acoustic index method for computing continuous
+           suspended-sediment concentrations: U.S. Geological Survey Techniques
+           and Methods, book 3, chap. C5, 63 p.,
+           http://dx.doi.org/10.3133/tm3C5.
+
         """
 
         # temperature-dependent relaxation frequency

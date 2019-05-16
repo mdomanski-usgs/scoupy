@@ -6,7 +6,20 @@ and form function for a SedimentSample.
 
 Notes
 -----
-Form function and attenuation are calculated according to [3]_ and [4]_.
+    Form function and attenuation are calculated according to [1]_ and [2]_.
+
+References
+----------
+.. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013, Using
+   multi-frequency acoustic attenuation to monitor grain size and concentration
+   of suspended sediment in rivers: Journal of the Acoustical Society of
+   America, v. 133, no. 4, p. 1959−1970, accessed March 11, 2016,
+   http://dx.doi.org/10.1121/1.4792645.
+
+.. [2] Thorne, P.D., and Meral, R., 2008, Formulations for the scattering
+   properties of suspended sandy sediments for use in the application of
+   acoustics to sediment transport processes: Continental Shelf Research, v.
+   28, no. 2, p. 309–317, doi:10.1016/j.csr.2007.08.002.
 
 """
 
@@ -56,7 +69,14 @@ def form_function(particle_diameter, frequency):
 
     Notes
     -----
-    f_e is calculated according to equation (7) of [4]_.
+    f_e is calculated according to equation (7) of [1]_.
+
+    References
+    ----------
+    .. [1] Thorne, P.D., and Meral, R., 2008, Formulations for the scattering
+       properties of suspended sandy sediments for use in the application of
+       acoustics to sediment transport processes: Continental Shelf Research,
+       v. 28, no. 2, p. 309–317, doi:10.1016/j.csr.2007.08.002.
 
     """
 
@@ -97,7 +117,15 @@ def scattering_attenuation_coefficient(particle_diameter, frequency,
     Notes
     -----
     Scattering attenuation coefficient is calculated using equation (5)
-    of [3]_.
+    of [1]_.
+
+    References
+    ----------
+    .. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013, Using
+       multi-frequency acoustic attenuation to monitor grain size and
+       concentration of suspended sediment in rivers: Journal of the
+       Acoustical Society of America, v. 133, no. 4, p. 1959−1970, accessed
+       March 11, 2016, http://dx.doi.org/10.1121/1.4792645.
 
     """
 
@@ -127,7 +155,14 @@ def scattering_cross_section(particle_diameter, frequency):
 
     Notes
     -----
-    The scattering cross section is calculated with equation (9) of [4]_.
+    The scattering cross section is calculated with equation (9) of [1]_.
+
+    References
+    ----------
+    .. [1] Thorne, P.D., and Meral, R., 2008, Formulations for the scattering
+       properties of suspended sandy sediments for use in the application of
+       acoustics to sediment transport processes: Continental Shelf Research,
+       v. 28, no. 2, p. 309–317, doi:10.1016/j.csr.2007.08.002.
 
     """
 
@@ -162,7 +197,15 @@ def viscous_attenuation_coefficient(particle_diameter, frequency,
     Notes
     -----
     The viscous attenuation coefficient is calculated using equation (7) of
-    [3]_.
+    [1]_.
+
+    References
+    ----------
+    .. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013, Using
+       multi-frequency acoustic attenuation to monitor grain size and
+       concentration of suspended sediment in rivers: Journal of the Acoustical
+       Society of America, v. 133, no. 4, p. 1959−1970, accessed March 11,
+       2016, http://dx.doi.org/10.1121/1.4792645.
 
     """
 
@@ -299,9 +342,17 @@ class AcousticSample:
         Notes
         -----
         The ensemble averaged attenuation coefficient consists of the sum of
-        the scattering and viscous attenuation coefficients (eqation (4) of
-        [3]_). The ensemble averaged scattering and viscous coefficients are
-        calculated according to equations (5) and (7) of [3]_.
+        the scattering and viscous attenuation coefficients ([1]_). The
+        ensemble averaged scattering and viscous coefficients are calculated
+        according to equations (5) and (7) of [1]_.
+
+        References
+        ----------
+        .. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013,
+           Using multi-frequency acoustic attenuation to monitor grain size and
+           concentration of suspended sediment in rivers: Journal of the
+           Acoustical Society of America, v. 133, no. 4, p. 1959−1970, accessed
+           March 11, 2016, http://dx.doi.org/10.1121/1.4792645.
 
         """
 
@@ -409,7 +460,15 @@ class AcousticSample:
         Notes
         -----
         The ensemble averaged form function is calculated using equation (3)
-        of [4]_.
+        of [1]_.
+
+        References
+        ----------
+        .. [1] Thorne, P.D., and Meral, R., 2008, Formulations for the
+           scattering properties of suspended sandy sediments for use in the
+           application of acoustics to sediment transport processes:
+           Continental Shelf Research, v. 28, no. 2, p. 309–317,
+           doi:10.1016/j.csr.2007.08.002.
 
         """
 
