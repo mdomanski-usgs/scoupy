@@ -15,7 +15,7 @@ class WaterProperties:
     methods of WaterProperties are class so it is unnecessary to create an
     instance of the class. See Examples.
 
-    Class Attributes
+    Attributes
     ----------------
     SPEED_OF_SOUND_IN_WATER : float
         1442.5 m/s. The speed of sound in water used as a default when
@@ -45,6 +45,11 @@ class WaterProperties:
     SPEED_OF_SOUND_IN_WATER = 1442.5  # m/s
 
     TEMPERATURE = 8.81187
+
+    def __init__(self):
+
+        raise NotImplementedError(
+            "Cannot create an instance of " + self.__class__.__name__)
 
     @classmethod
     def speed_of_sound(cls, temperature=TEMPERATURE):
