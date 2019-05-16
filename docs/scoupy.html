@@ -1,0 +1,899 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>scoupy package &#8212; scoupy 0.0.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="scoupy" href="modules.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="scoupy-package">
+<h1>scoupy package<a class="headerlink" href="#scoupy-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-scoupy">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-scoupy" title="Permalink to this headline">¶</a></h2>
+<p class="rubric">References</p>
+<dl class="footnote brackets">
+<dt class="label" id="id1"><span class="brackets"><a class="fn-backref" href="#id16">1</a></span></dt>
+<dd><p>Landers, M.N., Straub, T.D., Wood, M.S., and Domanski, M.M.,
+2016, Sediment acoustic index method for computing continuous
+suspended-sediment concentrations: U.S. Geological Survey Techniques
+and Methods, book 3, chap. C5, 63 p.,
+<a class="reference external" href="http://dx.doi.org/10.3133/tm3C5">http://dx.doi.org/10.3133/tm3C5</a>.</p>
+</dd>
+<dt class="label" id="id2"><span class="brackets"><a class="fn-backref" href="#id15">2</a></span></dt>
+<dd><p>Marczak, Wojciech, 1997, Water as a standard in the measurements of
+speed of sound in liquids: Journal of the Acoustical Society of America, v.
+102, no. 5, p. 2776−2779, accessed March 11, 2016, at
+<a class="reference external" href="http://scitation.aip.org/content/asa/journal/jasa/102/5/10.1121/1.420332">http://scitation.aip.org/content/asa/journal/jasa/102/5/10.1121/1.420332</a>.</p>
+</dd>
+<dt class="label" id="id3"><span class="brackets">3</span><span class="fn-backref">(<a href="#id5">1</a>,<a href="#id7">2</a>,<a href="#id8">3</a>,<a href="#id11">4</a>,<a href="#id13">5</a>,<a href="#id14">6</a>)</span></dt>
+<dd><p>Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013, Using
+multi-frequency acoustic attenuation to monitor grain size and concentration
+of suspended sediment in rivers: Journal of the Acoustical Society of
+America, v. 133, no. 4, p. 1959−1970, accessed March 11, 2016,
+<a class="reference external" href="http://dx.doi.org/10.1121/1.4792645">http://dx.doi.org/10.1121/1.4792645</a>.</p>
+</dd>
+<dt class="label" id="id4"><span class="brackets">4</span><span class="fn-backref">(<a href="#id6">1</a>,<a href="#id9">2</a>,<a href="#id10">3</a>,<a href="#id12">4</a>)</span></dt>
+<dd><p>Thorne, P.D., and Meral, R., 2008, Formulations for the scattering
+properties of suspended sandy sediments for use in the application of
+acoustics to sediment transport processes: Continental Shelf Research, v.
+28, no. 2, p. 309–317, doi:10.1016/j.csr.2007.08.002.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-scoupy.acousticsample">
+<span id="scoupy-acousticsample-module"></span><h2>scoupy.acousticsample module<a class="headerlink" href="#module-scoupy.acousticsample" title="Permalink to this headline">¶</a></h2>
+<p>This module contains the class definition and supporting functions for
+AcousticSample.</p>
+<p>The primary function of the AcousticSample class is to calculate attenuation
+and form function for a SedimentSample.</p>
+<p class="rubric">Notes</p>
+<p>Form function and attenuation are calculated according to <a class="footnote-reference brackets" href="#id3" id="id5">3</a> and <a class="footnote-reference brackets" href="#id4" id="id6">4</a>.</p>
+<dl class="class">
+<dt id="scoupy.acousticsample.AcousticSample">
+<em class="property">class </em><code class="descclassname">scoupy.acousticsample.</code><code class="descname">AcousticSample</code><span class="sig-paren">(</span><em>sediment_sample</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.acousticsample.AcousticSample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>sediment_sample</strong> (<a class="reference internal" href="#scoupy.sedimentsample.SedimentSample" title="scoupy.sedimentsample.SedimentSample"><em>SedimentSample</em></a>) – </p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="scoupy.acousticsample.AcousticSample.attenuation_coefficient">
+<code class="descname">attenuation_coefficient</code><span class="sig-paren">(</span><em>frequency</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.acousticsample.AcousticSample.attenuation_coefficient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attenuation coefficient of this sample</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frequency</strong> (<em>float</em>) – Acoustic frequency in kHz</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Ensemble averaged attenuation coefficient for this sample in
+dB * m**2/kg.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The ensemble averaged attenuation coefficient consists of the sum of
+the scattering and viscous attenuation coefficients (eqation (4) of
+<a class="footnote-reference brackets" href="#id3" id="id7">3</a>). The ensemble averaged scattering and viscous coefficients are
+calculated according to equations (5) and (7) of <a class="footnote-reference brackets" href="#id3" id="id8">3</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.acousticsample.AcousticSample.bin_attenuation">
+<code class="descname">bin_attenuation</code><span class="sig-paren">(</span><em>frequency</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.acousticsample.AcousticSample.bin_attenuation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sediment attenuation contribution from each bin of the sediment
+sample of this instance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frequency</strong> (<em>float</em>) – Acoustic frequency in kHz</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>diameters, attenuation</strong> – <cite>diameters</cite> is an array of diameters in m. <cite>attenuation</cite> is an
+array of attenuation values in dB/m.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array_like</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p><cite>diameters</cite> is an array of mid-points of the distribution of this
+instance. <cite>attenuation</cite> is the attenuation calculated for each
+diameter.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.acousticsample.AcousticSample.bin_scattering_strength">
+<code class="descname">bin_scattering_strength</code><span class="sig-paren">(</span><em>frequency</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.acousticsample.AcousticSample.bin_scattering_strength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scattering strength contribution from each bin of the sediment
+sample of this instance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frequency</strong> (<em>float</em>) – Acoustic frequency in kHz</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>diameter, scattering_strength</strong> – <cite>diameters</cite> is an array of diameters in m. <cite>scattering_strength</cite> is
+an array of scattering strength values in dB.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>array_like</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.acousticsample.AcousticSample.form_function">
+<code class="descname">form_function</code><span class="sig-paren">(</span><em>frequency</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.acousticsample.AcousticSample.form_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Ensemble averaged form function of this sample</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frequency</strong> (<em>float</em>) – Acoustic frequency in kHz</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Ensemble averaged form function</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The ensemble averaged form function is calculated using equation (3)
+of <a class="footnote-reference brackets" href="#id4" id="id9">4</a>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.acousticsample.AcousticSample.scattering_strength">
+<code class="descname">scattering_strength</code><span class="sig-paren">(</span><em>frequency</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.acousticsample.AcousticSample.scattering_strength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scattering strength for this this sample.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>frequency</strong> (<em>float</em>) – Acoustic frequency in kHz</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Scattering strength in dB</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The form function in the scattering strength from this method is
+from <cite>form_function</cite>.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.acousticsample.AcousticSample.sediment_sample">
+<code class="descname">sediment_sample</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.acousticsample.AcousticSample.sediment_sample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sediment sample of this instance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#scoupy.sedimentsample.SedimentSample" title="scoupy.sedimentsample.SedimentSample">SedimentSample</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="scoupy.acousticsample.calc_x">
+<code class="descclassname">scoupy.acousticsample.</code><code class="descname">calc_x</code><span class="sig-paren">(</span><em>particle_diameter</em>, <em>frequency</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.acousticsample.calc_x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate x = ka, where k is the wave number and a is particle radius</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particle_diameter</strong> (<em>float</em>) – Particle diameter, in m</p></li>
+<li><p><strong>frequency</strong> (<em>float</em>) – Acoustic frequency in kHz</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float, array_like</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="scoupy.acousticsample.form_function">
+<code class="descclassname">scoupy.acousticsample.</code><code class="descname">form_function</code><span class="sig-paren">(</span><em>particle_diameter</em>, <em>frequency</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.acousticsample.form_function" title="Permalink to this definition">¶</a></dt>
+<dd><p>Backscatter form function for a single particle diameter.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particle_diameter</strong> (<em>float</em>) – Particle diameter in m</p></li>
+<li><p><strong>frequency</strong> (<em>float</em>) – Acoustic frequency in kHz</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Form function</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>f_e is calculated according to equation (7) of <a class="footnote-reference brackets" href="#id4" id="id10">4</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="scoupy.acousticsample.scattering_attenuation_coefficient">
+<code class="descclassname">scoupy.acousticsample.</code><code class="descname">scattering_attenuation_coefficient</code><span class="sig-paren">(</span><em>particle_diameter</em>, <em>frequency</em>, <em>sediment_density</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.acousticsample.scattering_attenuation_coefficient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scattering attenuation coefficient for mono-sized distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particle_diameter</strong> (<em>float</em>) – Particle diameter in m</p></li>
+<li><p><strong>frequency</strong> (<em>float</em>) – Acoustic frequency in kHz</p></li>
+<li><p><strong>sediment_density</strong> (<em>float</em>) – Density of sediment in kg/m**3</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Scattering attenuation coefficient in m**2/kg</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Scattering attenuation coefficient is calculated using equation (5)
+of <a class="footnote-reference brackets" href="#id3" id="id11">3</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="scoupy.acousticsample.scattering_cross_section">
+<code class="descclassname">scoupy.acousticsample.</code><code class="descname">scattering_cross_section</code><span class="sig-paren">(</span><em>particle_diameter</em>, <em>frequency</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.acousticsample.scattering_cross_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>Total scattering cross section for a mono-sized distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particle_diameter</strong> (<em>float</em>) – Particle diameter in m</p></li>
+<li><p><strong>frequency</strong> (<em>float</em>) – Acoustic frequency in kHz</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Scattering cross section</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The scattering cross section is calculated with equation (9) of <a class="footnote-reference brackets" href="#id4" id="id12">4</a>.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="scoupy.acousticsample.viscous_attenuation_coefficient">
+<code class="descclassname">scoupy.acousticsample.</code><code class="descname">viscous_attenuation_coefficient</code><span class="sig-paren">(</span><em>particle_diameter</em>, <em>frequency</em>, <em>sediment_density</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.acousticsample.viscous_attenuation_coefficient" title="Permalink to this definition">¶</a></dt>
+<dd><p>Viscous attenuation coefficient for a mono-sized distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particle_diameter</strong> (<em>float</em>) – Particle diameter in m</p></li>
+<li><p><strong>frequency</strong> (<em>float</em>) – Acoustic frequency in kHz</p></li>
+<li><p><strong>sediment_density</strong> (<em>float</em>) – Density of sediment in kg/m**3</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Viscous attenuation coefficient in m**2/kg</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The viscous attenuation coefficient is calculated using equation (7) of
+<a class="footnote-reference brackets" href="#id3" id="id13">3</a>.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-scoupy.sedimentsample">
+<span id="scoupy-sedimentsample-module"></span><h2>scoupy.sedimentsample module<a class="headerlink" href="#module-scoupy.sedimentsample" title="Permalink to this headline">¶</a></h2>
+<p>This module contains the class definition for SedimentSample.</p>
+<dl class="class">
+<dt id="scoupy.sedimentsample.SedimentSample">
+<em class="property">class </em><code class="descclassname">scoupy.sedimentsample.</code><code class="descname">SedimentSample</code><span class="sig-paren">(</span><em>concentration</em>, <em>density=2650.0</em>, <em>size_distribution=None</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsample.SedimentSample" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Sediment sample.</p>
+<p>Data type containing sediment sample data from lab analysis.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>concentration</strong> (<em>float</em>) – Sediment concentration in kg/m**3</p></li>
+<li><p><strong>density</strong> (<em>float</em><em>, </em><em>optional</em>) – Density of sediment in kg/m**3 (the default is 2650).</p></li>
+<li><p><strong>size_distribution</strong> (<em>{tuple</em><em>, </em><em>SedimentSizeDistribution}</em><em>, </em><em>optional</em>) – Size distribution of the sediment sample (the default is None).</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>If <cite>size_distribution</cite> is a tuple, <cite>size_distribution[0]</cite> is a
+numpy.ndarray containing sediment diameters in meters and
+<cite>size_distribution[1]</cite> is a numpy.ndarray containing a CDF by volume for
+the size distribution. <cite>size_distribution[0].shape</cite> must equal
+<cite>size_distribution[1].shape</cite>.</p>
+<p>If size_distribution is not a tuple, it must be an instance of
+SedimentSizeDistribution or None.</p>
+<dl class="method">
+<dt id="scoupy.sedimentsample.SedimentSample.add">
+<code class="descname">add</code><span class="sig-paren">(</span><em>other</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsample.SedimentSample.add" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a sediment sample to this sample.</p>
+<p>If self or other don’t have size distributions, the returned
+SedimentSample will not have a size distribution.
+If both self and other have size distributions, the length of the
+diameter array of the size distributions must
+be equal.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>other</strong> (<a class="reference internal" href="#scoupy.sedimentsample.SedimentSample" title="scoupy.sedimentsample.SedimentSample"><em>SedimentSample</em></a>) – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Combined sediment sample.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#scoupy.sedimentsample.SedimentSample" title="scoupy.sedimentsample.SedimentSample">SedimentSample</a></p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Samples are added on the assumption they are taken from the same volume
+of water.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.sedimentsample.SedimentSample.concentration">
+<code class="descname">concentration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsample.SedimentSample.concentration" title="Permalink to this definition">¶</a></dt>
+<dd><p>The concentration of this sample</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Concentration in kg/m**3</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.sedimentsample.SedimentSample.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsample.SedimentSample.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>A deep copy of this SedimentSample</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#scoupy.sedimentsample.SedimentSample" title="scoupy.sedimentsample.SedimentSample">SedimentSample</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.sedimentsample.SedimentSample.density">
+<code class="descname">density</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsample.SedimentSample.density" title="Permalink to this definition">¶</a></dt>
+<dd><p>The density of this sample</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Density in kg/m**3</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.sedimentsample.SedimentSample.size_distribution">
+<code class="descname">size_distribution</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsample.SedimentSample.size_distribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>The size distribution of this sample</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#scoupy.sedimentsizedistribution.SedimentSizeDistribution" title="scoupy.sedimentsizedistribution.SedimentSizeDistribution">SedimentSizeDistribution</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-scoupy.sedimentsizedistribution">
+<span id="scoupy-sedimentsizedistribution-module"></span><h2>scoupy.sedimentsizedistribution module<a class="headerlink" href="#module-scoupy.sedimentsizedistribution" title="Permalink to this headline">¶</a></h2>
+<p>This module contains class definitions for sediment size distribution data
+types.</p>
+<p>The data types calculate distribution parameters (mean, median, standard
+deviation) and allow conversion between distribution by volume and number of
+particles.</p>
+<p><cite>SedimentSizeDistribution</cite> is the base, and most generic, type.</p>
+<p class="rubric">Notes</p>
+<p>Distribution type (volume, number) conversions are calculated according to
+equations (9) and (10) of <a class="footnote-reference brackets" href="#id3" id="id14">3</a>.</p>
+<dl class="class">
+<dt id="scoupy.sedimentsizedistribution.LogScaleSedimentSizeDistribution">
+<em class="property">class </em><code class="descclassname">scoupy.sedimentsizedistribution.</code><code class="descname">LogScaleSedimentSizeDistribution</code><span class="sig-paren">(</span><em>median_diameter</em>, <em>std_log</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsizedistribution.LogScaleSedimentSizeDistribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#scoupy.sedimentsizedistribution.SedimentSizeDistribution" title="scoupy.sedimentsizedistribution.SedimentSizeDistribution"><code class="xref py py-class docutils literal notranslate"><span class="pre">scoupy.sedimentsizedistribution.SedimentSizeDistribution</span></code></a></p>
+<p>Lognormal sediment size distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>median_diameter</strong> (<em>float</em>) – Median diameter, in meters.</p></li>
+<li><p><strong>float</strong> – Geometric standard deviation (log-scale)</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="scoupy.sedimentsizedistribution.LogScaleSedimentSizeDistribution.mean">
+<code class="descname">mean</code><span class="sig-paren">(</span><em>distribution='volume'</em>, <em>scale='none'</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsizedistribution.LogScaleSedimentSizeDistribution.mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>The mean particle diameter of the distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distribution</strong> (<em>{'volume'</em><em>, </em><em>'number'}</em><em>, </em><em>optional</em>) – Distribution type (the default is ‘volume’).</p></li>
+<li><p><strong>scale</strong> (<em>{'none'</em><em>, </em><em>'log'}</em><em>, </em><em>optional</em>) – Scale of distribution (the default is ‘none’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Mean particle diameter (in meters if <cite>scale</cite> is normal).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.sedimentsizedistribution.LogScaleSedimentSizeDistribution.median">
+<code class="descname">median</code><span class="sig-paren">(</span><em>distribution='volume'</em>, <em>scale='none'</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsizedistribution.LogScaleSedimentSizeDistribution.median" title="Permalink to this definition">¶</a></dt>
+<dd><p>The median particle diameter of the distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distribution</strong> (<em>{'volume'</em><em>, </em><em>'number'}</em><em>, </em><em>optional</em>) – Distribution type (the default is ‘volume’).</p></li>
+<li><p><strong>scale</strong> (<em>{'none'</em><em>, </em><em>'log'}</em><em>, </em><em>optional</em>) – Scale of distribution (the default is ‘none’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>median</strong> – Median particle diameter (in meters if <cite>scale</cite> is normal).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="scoupy.sedimentsizedistribution.PhiScaleSedimentSizeDistribution">
+<em class="property">class </em><code class="descclassname">scoupy.sedimentsizedistribution.</code><code class="descname">PhiScaleSedimentSizeDistribution</code><span class="sig-paren">(</span><em>median_diameter</em>, <em>sigma_phi</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsizedistribution.PhiScaleSedimentSizeDistribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#scoupy.sedimentsizedistribution.LogScaleSedimentSizeDistribution" title="scoupy.sedimentsizedistribution.LogScaleSedimentSizeDistribution"><code class="xref py py-class docutils literal notranslate"><span class="pre">scoupy.sedimentsizedistribution.LogScaleSedimentSizeDistribution</span></code></a></p>
+<p>Phi-scale size distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>median_diameter</strong> (<em>float</em>) – Median diameter (D50), in meters</p></li>
+<li><p><strong>sigma_phi</strong> (<em>float</em>) – Geometric standard deviation (phi-scale)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="scoupy.sedimentsizedistribution.SedimentSizeDistribution">
+<em class="property">class </em><code class="descclassname">scoupy.sedimentsizedistribution.</code><code class="descname">SedimentSizeDistribution</code><span class="sig-paren">(</span><em>particle_diameters</em>, <em>cumulative_distribution</em>, <em>distribution='volume'</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsizedistribution.SedimentSizeDistribution" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Sediment size distribution.</p>
+<p><cite>particle_diameters</cite> and <cite>cumulative_distribution</cite> must be one-dimensional
+and of the same length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>particle_diameters</strong> (<em>array_like</em>) – Particle diameters, in meters.</p></li>
+<li><p><strong>cumulative_distribution</strong> (<em>array_like</em>) – Cumulative distribution of the of particles. The cumulative
+distribution may be by either volume or number of particles, as
+specified by <cite>distribution</cite>.</p></li>
+<li><p><strong>distribution</strong> (<em>{'volume'</em><em>, </em><em>'number'}</em><em>, </em><em>optional</em>) – The type of distribution of <cite>cumulative_volume_distribution</cite> (the
+default is ‘volume’).</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="method">
+<dt id="scoupy.sedimentsizedistribution.SedimentSizeDistribution.cdf">
+<code class="descname">cdf</code><span class="sig-paren">(</span><em>distribution='volume'</em>, <em>scale='none'</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsizedistribution.SedimentSizeDistribution.cdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cumulative distribution function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distribution</strong> (<em>{'volume'</em><em>, </em><em>'number'}</em><em>, </em><em>optional</em>) – Distribution type (the default is ‘volume’).</p></li>
+<li><p><strong>scale</strong> (<em>{'none'</em><em>, </em><em>'log'}</em><em>, </em><em>optional</em>) – Scale of distribution (the default is ‘none’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>diameters, cdf</strong> – If <cite>scale</cite> is ‘none’, <cite>diameters</cite> is in meters.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.sedimentsizedistribution.SedimentSizeDistribution.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsizedistribution.SedimentSizeDistribution.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a copy of this instance</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><a class="reference internal" href="#scoupy.sedimentsizedistribution.SedimentSizeDistribution" title="scoupy.sedimentsizedistribution.SedimentSizeDistribution">SedimentSizeDistribution</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.sedimentsizedistribution.SedimentSizeDistribution.fraction">
+<code class="descname">fraction</code><span class="sig-paren">(</span><em>distribution='volume'</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsizedistribution.SedimentSizeDistribution.fraction" title="Permalink to this definition">¶</a></dt>
+<dd><p>The fraction of the distribution in each size class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>distribution</strong> (<em>{'volume'</em><em>, </em><em>'number'}</em><em>, </em><em>optional</em>) – Distribution type (the default is ‘volume’).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>diameters, fraction</strong> – Representative diameters and fraction of distribution</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The values in <cite>diameters</cite> are mid-points of the bins defined by the
+<cite>particle_diameters</cite> parameter of the initialization method.</p>
+<p><cite>fraction</cite> is calculated as the difference of the CDF value in each
+bin.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.sedimentsizedistribution.SedimentSizeDistribution.mean">
+<code class="descname">mean</code><span class="sig-paren">(</span><em>distribution='volume'</em>, <em>scale='none'</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsizedistribution.SedimentSizeDistribution.mean" title="Permalink to this definition">¶</a></dt>
+<dd><p>The mean particle diameter of the distribution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distribution</strong> (<em>{'volume'</em><em>, </em><em>'number'}</em><em>, </em><em>optional</em>) – Distribution type (the default is ‘volume’).</p></li>
+<li><p><strong>scale</strong> (<em>{'none'</em><em>, </em><em>'log'}</em><em>, </em><em>optional</em>) – Scale of distribution (the default is ‘none’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Mean particle diameter (in meters if <cite>scale</cite> is normal).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.sedimentsizedistribution.SedimentSizeDistribution.median">
+<code class="descname">median</code><span class="sig-paren">(</span><em>distribution='volume'</em>, <em>scale='none'</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsizedistribution.SedimentSizeDistribution.median" title="Permalink to this definition">¶</a></dt>
+<dd><p>The median particle diameter of the distribution</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distribution</strong> (<em>{'volume'</em><em>, </em><em>'number'}</em><em>, </em><em>optional</em>) – Distribution type (the default is ‘volume’).</p></li>
+<li><p><strong>scale</strong> (<em>{'none'</em><em>, </em><em>'log'}</em><em>, </em><em>optional</em>) – Scale of distribution (the default is ‘none’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Median particle diameter (in meters if <cite>scale</cite> is normal).</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.sedimentsizedistribution.SedimentSizeDistribution.pdf">
+<code class="descname">pdf</code><span class="sig-paren">(</span><em>distribution='volume'</em>, <em>scale='none'</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsizedistribution.SedimentSizeDistribution.pdf" title="Permalink to this definition">¶</a></dt>
+<dd><p>Probability density function (PDF).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distribution</strong> (<em>{'volume'</em><em>, </em><em>'number'}</em><em>, </em><em>optional</em>) – Distribution type (the default is ‘volume’).</p></li>
+<li><p><strong>scale</strong> (<em>{'none'</em><em>, </em><em>'log'}</em><em>, </em><em>optional</em>) – Scale of distribution (the default is ‘none’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>diameters, pdf</strong> – The diameters and values of a PDF. If <cite>scale</cite> is ‘none’,
+<cite>diameters</cite> is in meters and <cite>pdf</cite> is in meters**-1.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.sedimentsizedistribution.SedimentSizeDistribution.std">
+<code class="descname">std</code><span class="sig-paren">(</span><em>distribution='volume'</em>, <em>scale='none'</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.sedimentsizedistribution.SedimentSizeDistribution.std" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard deviation.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>distribution</strong> (<em>{'volume'</em><em>, </em><em>'number'}</em><em>, </em><em>optional</em>) – Distribution type (the default is ‘volume’).</p></li>
+<li><p><strong>scale</strong> (<em>{'none'</em><em>, </em><em>'log'}</em><em>, </em><em>optional</em>) – Scale of distribution (the default is ‘none’).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>std</strong> – Standard deviation of the distribution. If <cite>scale</cite> is ‘none’,
+<cite>std</cite> is in meters.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="module-scoupy.water">
+<span id="scoupy-water-module"></span><h2>scoupy.water module<a class="headerlink" href="#module-scoupy.water" title="Permalink to this headline">¶</a></h2>
+<p>This module contains the WaterProperties class definition.</p>
+<p>WaterProperties contains methods for calculating properties of water for
+acoustic processing.</p>
+<dl class="class">
+<dt id="scoupy.water.WaterProperties">
+<em class="property">class </em><code class="descclassname">scoupy.water.</code><code class="descname">WaterProperties</code><a class="headerlink" href="#scoupy.water.WaterProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Calculates properties of water</p>
+<p>WaterProperties contains methods for calculating properties of water. All
+methods of WaterProperties are class so it is unnecessary to create an
+instance of the class. See Examples.</p>
+<dl class="simple">
+<dt>SPEED_OF_SOUND_IN_WATER<span class="classifier">float</span></dt><dd><p>1442.5 m/s. The speed of sound in water used as a default when
+necessary.</p>
+</dd>
+<dt>TEMPERATURE<span class="classifier">float</span></dt><dd><p>8.81187 deg C. Water temperature at which the speed of sound in water
+is ~1442.5 m/s (as calculated with <cite>speed_of_sound()</cite>).</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="scoupy.water.WaterProperties.speed_of_sound">
+<code class="descname">speed_of_sound</code><span class="sig-paren">(</span><em>temperature=None</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.water.WaterProperties.speed_of_sound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the speed of sound in water</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.water.WaterProperties.water_absorption">
+<code class="descname">water_absorption</code><span class="sig-paren">(</span><em>frequency</em>, <em>temperature=None</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.water.WaterProperties.water_absorption" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the water absorption coefficient</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.water.WaterProperties.wavenumber">
+<code class="descname">wavenumber</code><span class="sig-paren">(</span><em>frequency</em>, <em>temperature=None</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.water.WaterProperties.wavenumber" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the wavenumber of an acoustic wave</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="scoupy.water.WaterProperties.wavelength">
+<code class="descname">wavelength</code><span class="sig-paren">(</span><em>frequency</em>, <em>temperature=None</em><span class="sig-paren">)</span><a class="headerlink" href="#scoupy.water.WaterProperties.wavelength" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the wavelength of an acoustic wave</p>
+</dd></dl>
+
+<p class="rubric">Examples</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">WaterProperties</span><span class="o">.</span><span class="n">speed_of_sound</span><span class="p">()</span>
+<span class="go">1442.5000230670473</span>
+</pre></div>
+</div>
+<dl class="attribute">
+<dt id="scoupy.water.WaterProperties.SPEED_OF_SOUND_IN_WATER">
+<code class="descname">SPEED_OF_SOUND_IN_WATER</code><em class="property"> = 1442.5</em><a class="headerlink" href="#scoupy.water.WaterProperties.SPEED_OF_SOUND_IN_WATER" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="scoupy.water.WaterProperties.TEMPERATURE">
+<code class="descname">TEMPERATURE</code><em class="property"> = 8.81187</em><a class="headerlink" href="#scoupy.water.WaterProperties.TEMPERATURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="classmethod">
+<dt>
+<em class="property">classmethod </em><code class="descname">speed_of_sound</code><span class="sig-paren">(</span><em>temperature=8.81187</em><span class="sig-paren">)</span></dt>
+<dd><p>Speed of sound in water</p>
+<p>Calculate the speed of sound in water in m/s.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>temperature</strong> (<em>float</em><em>, </em><em>optional</em>) – Water temperature in deg C (the default is <cite>TEMPERATURE</cite>).</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Speed of sound in water in m/s.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The speed of sound in water is calculated using the fifth order
+described in <a class="footnote-reference brackets" href="#id2" id="id15">2</a>.</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt>
+<em class="property">classmethod </em><code class="descname">water_absorption</code><span class="sig-paren">(</span><em>frequency</em>, <em>temperature=8.81187</em><span class="sig-paren">)</span></dt>
+<dd><p>Water absorption of an acoustic signal</p>
+<p>Calculates the water absorption of an acoustic signal in dB/m.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frequency</strong> (<em>float</em>) – Acoustic frequency in kHz.</p></li>
+<li><p><strong>temperature</strong> (<em>float</em><em>, </em><em>optional</em>) – Water temperature in deg C (the default is <cite>TEMPERATURE</cite>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Water absorption in dB/m.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>Water absorption is calculated according to equation (8) of <a class="footnote-reference brackets" href="#id1" id="id16">1</a>
+(under the assumption of freshwater rivers at shallow depths).</p>
+<p class="rubric">References</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt>
+<em class="property">classmethod </em><code class="descname">wavelength</code><span class="sig-paren">(</span><em>frequency</em>, <em>temperature=None</em><span class="sig-paren">)</span></dt>
+<dd><p>Acoustic wavelength</p>
+<p>Calculates the acoustic wavelength in m.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frequency</strong> (<em>float</em>) – Acoustic frequency in kHz.</p></li>
+<li><p><strong>temperature</strong> (<em>float</em>) – Water temperature in deg C (the default is <cite>TEMPERATURE</cite>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Wavelength in m.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="classmethod">
+<dt>
+<em class="property">classmethod </em><code class="descname">wavenumber</code><span class="sig-paren">(</span><em>frequency</em>, <em>temperature=8.81187</em><span class="sig-paren">)</span></dt>
+<dd><p>Acoustic wavenumber</p>
+<p>Calculates the acoustic wavenumber in 1/m.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frequency</strong> (<em>float</em>) – Acoustic frequency in kHz.</p></li>
+<li><p><strong>temperature</strong> (<em>float</em><em>, </em><em>optional</em>) – Water temperature in deg C (the default is <cite>TEMPERATURE</cite>).</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Wave number in 1/m.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">scoupy</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">scoupy</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">scoupy package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">scoupy</a><ul>
+      <li>Previous: <a href="modules.html" title="previous chapter">scoupy</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 2.0.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/scoupy.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
