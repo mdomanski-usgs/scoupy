@@ -10,15 +10,7 @@ particles.
 Notes
 -----
 Distribution type (volume, number) conversions are calculated according to
-equations (9) and (10) of [1]_.
-
-References
-----------
-.. [1] Moore, S.A., Le Coz, J., Hurther, D., and Paquier, A., 2013, Using
-   multi-frequency acoustic attenuation to monitor grain size and concentration
-   of suspended sediment in rivers: Journal of the Acoustical Society of
-   America, v. 133, no. 4, p. 1959−1970, accessed March 11, 2016,
-   http://dx.doi.org/10.1121/1.4792645.
+equations (9) and (10) of [3]_.
 
 """
 

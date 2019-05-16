@@ -13,7 +13,7 @@ class SedimentSample:
     Data type containing sediment sample data from lab analysis.
 
     Parameters
-    ------
+    ----------
     concentration : float
         Sediment concentration in kg/m**3
     density : float, optional
@@ -21,14 +21,16 @@ class SedimentSample:
     size_distribution : {tuple, SedimentSizeDistribution}, optional
         Size distribution of the sediment sample (the default is None).
 
-        If `size_distribution` is a tuple,
-            `size_distribution[0]` is a numpy.ndarray containing sediment
-            diameters in meters and `size_distribution[1]` is a numpy.ndarray
-            containing a CDF by volume for the size distribution.
-        `size_distribution[0].shape` must equal `size_distribution[1].shape`.
+    Notes
+    -----
+    If `size_distribution` is a tuple, `size_distribution[0]` is a
+    numpy.ndarray containing sediment diameters in meters and
+    `size_distribution[1]` is a numpy.ndarray containing a CDF by volume for
+    the size distribution. `size_distribution[0].shape` must equal
+    `size_distribution[1].shape`.
 
-        If size_distribution is not a tuple, it must be an instance of
-        SedimentSizeDistribution or None.
+    If size_distribution is not a tuple, it must be an instance of
+    SedimentSizeDistribution or None.
 
     """
 

@@ -1,6 +1,14 @@
 scoupy package
 ==============
 
+Module contents
+---------------
+
+.. automodule:: scoupy
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
 Submodules
 ----------
 
@@ -32,15 +40,6 @@ scoupy.water module
 -------------------
 
 .. automodule:: scoupy.water
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: scoupy
     :members:
     :undoc-members:
     :show-inheritance:
