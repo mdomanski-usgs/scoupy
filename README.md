@@ -18,10 +18,7 @@ damages resulting from the authorized or unauthorized use of the software.
 ## Requirements
 scoupy was developed with Python 3.7 and hasn't been tested under any other
 version. Beyond that, the most basic requirements of scoupy are listed in
-[requirements.txt](requirements.txt). For managing Python environments,
-[Anaconda Distribution](https://docs.anaconda.com/anaconda/install/) is
-recommended. See the Anaconda Distribution documentation for more help on
-setting up an environment.
+[requirements.txt](requirements.txt).
 
 ## Installing
 ### Current environment

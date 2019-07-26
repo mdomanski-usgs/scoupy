@@ -15,6 +15,7 @@ setup(
     version=release,
     packages=['scoupy'],
     url='https://github.com/mdomanski-usgs/scoupy',
+    test_suite = 'test_scoupy.py',
     license='CC0 1.0',
     author='Marian Domanski',
     author_email='mdomanski@usgs.gov',
