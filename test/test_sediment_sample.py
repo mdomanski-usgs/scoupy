@@ -1,11 +1,11 @@
 import unittest
 
-
+import numpy as np
 from scoupy.sedimentsample import SedimentSample
 from scoupy.sedimentsizedistribution import LogScaleSedimentSizeDistribution
 
 
-class TestSedimentSizeSample(unittest.TestCase):
+class TestSedimentSample(unittest.TestCase):
 
     def test_add(self):
 
@@ -17,7 +17,7 @@ class TestSedimentSizeSample(unittest.TestCase):
         third_sample = first_sample.add(second_sample)
 
         self.assertEqual(first_sample.size_distribution(),
-                         first_sample.size_distribution())
+                         third_sample.size_distribution())
         self.assertEqual(third_sample.concentration(), 2)
 
     def test_add_raises(self):
@@ -58,3 +58,17 @@ class TestSedimentSizeSample(unittest.TestCase):
 
         self.assertEqual(sample._size_distribution, size_distribution)
         self.assertIsNot(sample._size_distribution, size_distribution)
+
+    def test_split(self):
+
+        concentration = 100
+
+        size_distribution = LogScaleSedimentSizeDistribution(5e-5, 0.25)
+        sample = SedimentSample(
+            concentration, size_distribution=size_distribution)
+        fines_sample, sand_sample = sample.split()
+        summed_sample = sand_sample.add(fines_sample)
+        _, cdf = sample.size_distribution().cdf()
+        _, summed_cdf = summed_sample.size_distribution().cdf()
+
+        self.assertTrue(np.allclose(cdf, summed_cdf, atol=1e-5, rtol=0))
