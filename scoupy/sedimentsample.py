@@ -111,8 +111,8 @@ class SedimentSample:
         """
 
         new_density = (self._concentration + other._concentration) / \
-            (self._concentration/self._density +
-             other._concentration/other._density)
+            (self._concentration / self._density +
+             other._concentration / other._density)
 
         return new_density
 
@@ -209,3 +209,43 @@ class SedimentSample:
         """
 
         return self._size_distribution.copy()
+
+    def split(self, diameter=62.5e-6):
+        """Splits this sample into two samples given a diameter
+
+        Parameters
+        ----------
+        diameter : float, optional
+            The diameter to split this sample on, in meters, (the 
+            default is 62.5e-6).
+
+        Returns
+        -------
+        SedimentSample, SedimentSample
+
+        Notes
+        -----
+        The particle size distribution diameters in the returned
+        samples are the same diameters that are contained in this
+        sample. This means that `diameter` will not be a characteristic
+        particle diameter in the distribution unless `diameter` is
+        defined as a bin edge in the distribution of this sample.
+
+        """
+
+        diameters, cdf = self._size_distribution.cdf()
+
+        split_fraction = np.interp(diameter, diameters, cdf)
+
+        c_low = self._concentration * split_fraction
+        c_high = self._concentration * (1 - split_fraction)
+
+        cdf_low = np.clip(cdf, 0, split_fraction) / split_fraction
+        cdf_adj_high = cdf - split_fraction
+        cdf_high = np.clip(cdf_adj_high, 0, 1) / cdf_adj_high.max()
+
+        sample_low = SedimentSample(c_low, self._density, (diameters, cdf_low))
+        sample_high = SedimentSample(
+            c_high, self._density, (diameters, cdf_high))
+
+        return sample_low, sample_high
